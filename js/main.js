@@ -19,12 +19,6 @@ checkStringLength('Кекс', 20);
 
 const PHOTO_COUNT = 25;
 
-function getSequenceNumber () {
-  for (let i = 0; i < PHOTO_COUNT; i++) {
-    return i + 1;
-  }
-}
-
 const PHOTO_DESCRIPTION = [
   'Красивое',
   'Очень красивое',
@@ -53,14 +47,18 @@ const PHOTO_DESCRIPTION = [
   'Ну... такое',
 ];
 
-const generatePhoto = () => ({
-  id: getSequenceNumber(),
-  url: `photos/${getSequenceNumber()}.jpg`,
-  description: PHOTO_DESCRIPTION[getRandomNumber(0, PHOTO_DESCRIPTION.length - 1)],
-  likes: getRandomNumber (15, 200),
-  comments: getRandomNumber (0, 200),
-});
+function generatePhoto() {
+  const photosArray = [];
+  for (let i = 0; i < PHOTO_COUNT; i++) {
+    photosArray.push({
+      id:i + 1,
+      url: `photos/${i + 1}.jpg`,
+      description: PHOTO_DESCRIPTION[getRandomNumber(0, PHOTO_DESCRIPTION.length - 1)],
+      likes: getRandomNumber(15, 200),
+      comments: getRandomNumber(0, 200)
+    });
+  }
+  return photosArray;
+}
 
-const photoResult = Array.from({length: PHOTO_COUNT}, generatePhoto);
-
-photoResult();
+generatePhoto();
