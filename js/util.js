@@ -8,12 +8,10 @@ function getRandomNumber (min, max) {
   return Math.round(randomResult);
 }
 
-getRandomNumber(1, 5);
-
 function checkStringLength (string, length) {
   return string.length <= length;
 }
 
-checkStringLength('Кекс', 20);
+export {checkStringLength};
 
 export {getRandomNumber};
